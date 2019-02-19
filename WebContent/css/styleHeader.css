@@ -1,0 +1,202 @@
+/*-- Headers --*/
+
+/* Header that doesn't scroll */
+.header_fixed {
+	background: #212121;
+	position: fixed;
+	width: 100%;
+	z-index: 9999;
+}
+
+.header_offers {
+	float: left;
+}
+
+.header_offers a {
+	font-size: 1.2em;
+	color: #fff;
+	text-decoration: none;
+	padding: .5em 1em;
+	background: #84C639;
+	display: block;
+}
+
+.header_search {
+	float: left;
+	width: 27%;
+	max-width: 27%;
+	margin: 0.1em 0em 0em 1em;
+}
+
+.header_search input[type="text"] {
+	outline: none;
+	padding: 10px;
+	color: #212121;
+	font-size: 14px;
+	width: 85%;
+	background: #fff;
+	border: 1px solid #999;
+	float: left;
+}
+
+.header_search input[type="submit"] {
+	outline: none;
+	padding: 9.5px 0 9.5px 0;
+	width: 15%;
+	border: 1px solid;
+	position: relative;
+	background: url(../images/img-sp1.png) no-repeat 14px 5px #FA1818;
+}
+
+.header_search input[type="submit"]:hover {
+	background: url(../images/img-sp1.png) no-repeat 14px 5px #84C639;
+}
+
+.header_cart {
+	float: right;
+}
+
+.addToCartBtn {
+	color: #fff;
+	background-color: #0000;
+	font-size: 14px;
+	outline: none;
+	text-transform: capitalize;
+	padding: .5em .5em .5em .5em;
+	border: 1px solid #84c639;
+	margin: .35em 0;
+}
+
+.header_account {
+	float: right;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+
+.header_account ul li {
+	list-style-type: none;
+}
+
+.header_contact {
+	float: left;
+}
+
+.header_contact h2 a {
+	font-size: .74em;
+	color: #fff;
+	padding: .5em 1.5em;
+	background: #FA1818;
+	display: block;
+	text-decoration: none;
+}
+
+.myaccount_collapsed a {
+	display: block;
+	padding-top: 1em;
+	font-size: 1em;
+	color: #fff;
+}
+
+.myaccount_options ul li {
+	list-style-type: none;
+}
+
+.myaccount_options ul li:first-child {
+	margin-bottom: .5em;
+}
+
+.myaccount_options ul li a {
+	color: #212121;
+	/*-- w3layouts --*/
+	display: block;
+	text-decoration: none;
+}
+
+.myaccount_options ul li a:hover {
+	color: #FA1818;
+}
+
+ul.dropdown-menu.drp-mnu {
+	right: 0;
+	min-width: 130px;
+	text-align: center;
+	padding: 1.5em 0;
+	margin: 0;
+	left: auto;
+}
+
+ul.dropdown-menu.drp-mnu li:first-child {
+	margin-bottom: .5em;
+}
+
+ul.dropdown-menu.drp-mnu li a {
+	color: #999;
+}
+
+ul.dropdown-menu.drp-mnu li a i {
+	padding-left: 1em;
+}
+
+/* //Header that doesn't scroll */
+
+/* Scrollable header */
+.header_scrollable {
+	padding: 4em 0 1em;
+	/* background: #84C639; */
+}
+
+.header_logo {
+	float: left;
+	margin-right: 7em;
+}
+
+.header_logo h1 a {
+	font-size: 1.5em;
+	color: #212121;
+	text-decoration: none;
+	text-transform: uppercase;
+	display: block;
+	background: url(../images/img-sp.png) no-repeat 54px 6px;
+	line-height: 1;
+	height: 97px;
+}
+
+.header_logo h1 a span {
+	font-size: .3em;
+	display: block;
+	color: #FA1818;
+}
+
+.header_links {
+	float: left;
+	margin-top: 2.3em;
+}
+
+.header_links ul.header_reststaurants li {
+	display: inline-block;
+}
+
+.header_links ul.header_reststaurants li a {
+	color: #212121;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+	font-size: 18px;
+}
+
+.header_links ul.header_reststaurants li a.current {
+	color: #FA1818;
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration: none;
+}
+
+.header_links ul.header_reststaurants li a:hover {
+	color: #FA1818;
+}
+
+.header_links ul.header_reststaurants li i {
+	padding: 0 1em;
+}
+
+/* //Scrollable header */
+
+/*-- //Headers --*/
