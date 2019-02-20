@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +25,7 @@ public class DisplayCart extends HttpServlet {
 		doGet(request, response);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,11 +35,11 @@ public class DisplayCart extends HttpServlet {
 		// Get parameters from request
 		int qty = Integer.parseInt(request.getParameter("qty"));
 		int foodId = Integer.parseInt(request.getParameter("foodId"));
-		String action = request.getParameter("action");
+		String discountedPrice = request.getParameter("offerPrice");
 
+		String action = request.getParameter("action");
 		String removeButtonValue = request.getParameter("remove");
 		String updateButtonValue = request.getParameter("update");
-		String addButtonValue = request.getParameter("add");
 
 		// Callback URL
 		String url = (String) session.getAttribute("url");
@@ -62,11 +62,25 @@ public class DisplayCart extends HttpServlet {
 			// session.setAttribute("food", food);
 
 			if (food != null) {
-				// Create a cart item
-				CartItem cartItem = new CartItem(food, qty, qty * food.getPrice());
+				// Create a cart item				
+				CartItem cartItem;
+				try {
+					if (discountedPrice != null)
+						cartItem = new CartItem(food, qty, qty * Integer.parseInt(discountedPrice));
+					else
+						cartItem = new CartItem(food, qty, qty * food.getPrice());
+				} catch (Exception e) {
+					cartItem = new CartItem(food, qty, qty * food.getPrice());
+				}
+				// Reset Cart and add
+				if (action != null) {
+					cart = new ArrayList<CartItem>();
+					addToCart(cartItem, cart);
+
+				}
 
 				// Remove Item From Cart
-				if  (removeButtonValue != null) {
+				else if (removeButtonValue != null) {
 					removeFromCart(cartItem, cart);
 
 				}

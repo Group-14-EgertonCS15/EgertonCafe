@@ -40,7 +40,7 @@ public class RegisterClass extends HttpServlet {
 			String email = request.getParameter("email");
 			String passwd = request.getParameter("password");
 
-			User user = new User(1,firstname, lastname, email, passwd);
+			User user = new User(1,firstname, lastname, email, passwd, "");
 
 			boolean isRegistered = false;
 			Statement stmt = connection.createStatement();

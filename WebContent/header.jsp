@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="models.CartItem"%>
 <%@page import="models.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Restaurant"%>
@@ -20,6 +21,8 @@
 	}
 
 	User user = (User) session.getAttribute("user");
+	ArrayList<CartItem> cartItems = (ArrayList<CartItem>) session.getAttribute("cart");
+
 %>
 
 <head>
@@ -49,12 +52,12 @@
 	<div class="header_fixed">
 
 		<!-- Offers -->
-		<div class="header_offers">
+		<div class="header_offers" >
 			<a href="FetchOffers">Special Offers !</a>
 		</div>
 
 		<!-- Search -->
-		<div class="header_search">
+		<div class="header_search" style="display: none">
 			<form action="#" method="post">
 				<input type="text" name="Product" value="Search a product..."
 					onfocus="this.value = '';"

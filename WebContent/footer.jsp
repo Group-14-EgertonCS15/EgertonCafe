@@ -18,7 +18,14 @@
 					}
 
 			} catch (Exception e) {
-			}%>>
+			}
+			if (request.getParameter("showCheckOut") != null)
+				if (request.getParameter("showCheckOut").equals("yes")) {
+					out.println(" onload = $('.addToCartBtn').click() ");
+				} else if (request.getParameter("showCheckOut").equals("processed")) {
+					out.println(" onload = $('.addToCartBtn').click() ");
+				}%>>
+
 	<div class="footer">
 		<p>
 			© Egerton University Web Cafe. All rights reserved | Design by <a

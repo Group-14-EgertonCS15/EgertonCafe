@@ -23,7 +23,7 @@ public class UserIO {
 
 		while (rs.next())
 			users.add(new User(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),
-					rs.getString("email"), rs.getString("password")));
+					rs.getString("email"), rs.getString("password"), rs.getString("type")));
 
 		// Close DB connection
 		connection.close();

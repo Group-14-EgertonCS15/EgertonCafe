@@ -16,62 +16,7 @@
 
 	<!-- Content -->
 	<div class="banner">
-		<div class="content_left">
 
-			<nav style="width: 100%;">
-				<ul style="padding: 1em;">
-					<a href="#">Beverages</a>
-					<ul style="padding-left: 2em;">Hot Drinks
-					</ul>
-					<ul style="padding-left: 2em;">Sodas
-					</ul>
-					<ul style="padding-left: 2em;">Fruit Juices
-					</ul>
-				</ul>
-				<ul style="padding: 1em;">
-					<a href="#">Breakfast Pack</a>
-				</ul>
-				<ul style="padding: 1em;">
-					<a href="#">Main Dishes</a>
-				</ul>
-				<ul style="padding: 1em;">
-					<a href="#">Stews</a>
-				</ul>
-				<ul style="padding: 1em;">
-					<a href="#">Vegetables</a>
-				</ul>
-				<ul style="padding: 1em;">
-					<a href="#">Fresh Fruits</a>
-				</ul>
-				<ul style="padding: 1em;">
-					<a href="#">Snacks</a>
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-				<ul style="padding: 1em;">
-				</ul>
-
-
-
-			</nav>
-		</div>
-		<div class="content_right">
 			<div class=content_max>
 				<h3>
 					Meals Available at
@@ -115,9 +60,26 @@
 									</div>
 									<ul class="icon">
 
-										<input type="button" value="Buy     ."
-											onclick="addToCart(<%=f.getId()%>)"
-											style="background: url(images/cart.png) 44px 16px no-repeat; border: 0; border-radius 10; background-color: #222e; color: #fff; font-size: 14px; text-transform: capitalize; padding: 1em; border: 1px solid #84c639; box-shadow: 0 2px 4px rgba(0, 0, 0, .5)">
+										<%
+											String firstItemRestaurantId = "_";
+													try {
+														if (cartItems != null) {
+															firstItemRestaurantId = String.valueOf(cartItems.get(0).getFood().getRestaurantId());
+														}
+													} catch (Exception e) {
+													}
+										%>
+
+										<button
+											<%if (firstItemRestaurantId.equals("_"))
+						out.println("onclick=\"window.location.href=('DisplayCart?foodId=" + f.getId() + "&qty=1')\"");
+					else if (firstItemRestaurantId.equals(String.valueOf(restaurant.getId())))
+						out.println("onclick=\"window.location.href=('DisplayCart?foodId=" + f.getId() + "&qty=1')\"");
+					else
+						out.println("onclick=\"  showOption( " + f.getId() + ") \"");%>
+											style="background: url(images/cart.png) 44px 24px no-repeat; border: 0; border-radius 10; background-color: #222e; color: #fff; font-size: 14px; text-transform: capitalize; padding: 1.5em; border: 1px solid #84c639; box-shadow: 0 2px 4px rgba(0, 0, 0, .5)">
+										<span>Buy .</span>
+									</button>
 
 
 									</ul>
@@ -126,29 +88,8 @@
 							</div>
 						</div>
 					</div>
-					
-					<script type="text/javascript">
 
-function addToCart( restID ) {
-<%
-	//if( restID == cart){}
-	%>
-	parent.open('DisplayCart?foodId='+restID+'&qty=1');
-
-	
-	if (confirm('Are you sure you want to save this thing into the database?')) {
-		parent.open('DisplayCart?foodId=<%=f.getId()%>&qty=1');
-
-	    // Save it!
-	} else {
-	    // Do nothing!
-	}
-	
-	
-}
-
-</script>
-
+				
 					<%
 						}
 
@@ -161,7 +102,7 @@ function addToCart( restID ) {
 				</div>
 			</div>
 
-		</div>
+		
 		<div class="clearfix"></div>
 	</div>
 	<!-- //Content -->

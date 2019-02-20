@@ -15,7 +15,7 @@
 
 
 <body>
-			
+
 
 	<!-- Content -->
 	<div class="banner">
@@ -42,7 +42,6 @@
 							Restaurant r = o.getRestaurant();
 				%>
 
-
 				<div class="col-md-3 w3ls_w3l_banner_left"
 					style="padding-bottom: 2em;">
 					<div>
@@ -56,17 +55,33 @@
 										<%=f.getName()%>
 									</h3>
 									<div class="clearfix"></div>
-									<span style="font-size: 20px"> <%="Ksh. " + f.getPrice() + ".00"%>
+									<span style="font-size: 20px"> <%="Ksh. " + o.getDiscountedPrice()+ ".00"%>
 									</span>
 
 								</div>
 								<ul class="icon">
 
+									<%
+										String firstItemRestaurantId = "_";
+												try {
+													if (cartItems != null) {
+														firstItemRestaurantId = String.valueOf(cartItems.get(0).getFood().getRestaurantId());
+													}
+												} catch (Exception e) {
+												}
+									%>
 
-									<input type="button" value="Buy     ."
-										onclick="addToCart(<%=f.getId()%>)"
-										style="background: url(images/cart.png) 44px 16px no-repeat; border: 0; border-radius 10; background-color: #222e; color: #fff; font-size: 14px; text-transform: capitalize; padding: 1em; border: 1px solid #84c639; box-shadow: 0 2px 4px rgba(0, 0, 0, .5)">
 
+									<button
+										<%if (firstItemRestaurantId.equals("_"))
+						out.println("onclick=\"window.location.href=('DisplayCart?foodId=" + f.getId() + "&qty=1&offerPrice="+o.getDiscountedPrice()+"')\"");
+					else if (firstItemRestaurantId.equals(String.valueOf(r.getId())))
+						out.println("onclick=\"window.location.href=('DisplayCart?foodId=" + f.getId() + "&qty=1&offerPrice="+o.getDiscountedPrice()+"')\"");
+					else
+						out.println("onclick=\"  showOptionInOffers( " + f.getId() + "," + o.getDiscountedPrice() + ") \"");%>
+										style="background: url(images/cart.png) 44px 24px no-repeat; border: 0; border-radius 10; background-color: #222e; color: #fff; font-size: 14px; text-transform: capitalize; padding: 1.5em; border: 1px solid #84c639; box-shadow: 0 2px 4px rgba(0, 0, 0, .5)">
+										<span>Buy .</span>
+									</button>
 
 
 								</ul>
@@ -79,29 +94,6 @@
 						</div>
 					</div>
 				</div>
-
-<script type="text/javascript">
-
-function addToCart( restID ) {
-<%
-	//if( restID == cart){}
-	%>
-	parent.open('DisplayCart?foodId='+restID+'&qty=1');
-
-	
-	if (confirm('Are you sure you want to save this thing into the database?')) {
-		parent.open('DisplayCart?foodId=<%=f.getId()%>&qty=1');
-
-	    // Save it!
-	} else {
-	    // Do nothing!
-	}
-	
-	
-}
-
-</script>
-
 				<%
 					}
 
@@ -120,5 +112,9 @@ function addToCart( restID ) {
 
 
 </body>
+
+
+
+
 <%@ include file="footer.jsp"%>
 </html>

@@ -11,15 +11,17 @@ public class User implements Serializable {
 	private String lastname;
 	private String email;
 	private String password;
+	private String type;
 
 	public User() {
 	}
 
-	public User(int id, String firstname, String lastname, String email, String password) {
+	public User(int id, String firstname, String lastname, String email, String password, String type) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.password = password;
+		this.type= type;
 	}
 
 	public String getId() {
@@ -60,6 +62,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

@@ -25,8 +25,8 @@ public class OffersIO {
 			Food food = FoodIO.getFoodById(rs.getInt("food_id"));
 			Restaurant restaurant = RestaurantIO.getRestaurantById(rs.getInt("restaurant_id"));
 
-			offers.add(
-					new Offer(rs.getInt("id"), food, restaurant, rs.getString("start_time"), rs.getString("end_time")));
+			offers.add(new Offer(rs.getInt("id"), food, rs.getInt("discounted_price"), restaurant,
+					rs.getString("start_time"), rs.getString("end_time")));
 		}
 		// Close DB connection
 		connection.close();
@@ -47,7 +47,8 @@ public class OffersIO {
 			Food food = FoodIO.getFoodById(rs.getInt("food_id"));
 			Restaurant restaurant = RestaurantIO.getRestaurantById(rs.getInt("restaurant_id"));
 
-			return new Offer(rs.getInt("id"), food, restaurant, rs.getString("start_time"), rs.getString("end_time"));
+			return new Offer(rs.getInt("id"), food, rs.getInt("discounted_price"), restaurant,
+					rs.getString("start_time"), rs.getString("end_time"));
 		}
 
 		// Close DB connection

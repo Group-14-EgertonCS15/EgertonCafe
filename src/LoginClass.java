@@ -45,9 +45,14 @@ public class LoginClass extends HttpServlet {
 
 						// Logged in successfully
 						session.setAttribute("user", u);
-						response.sendRedirect("offers.jsp");
-
 						isLoggedIn = true;
+
+						if (u.getType().equals("customer")) {
+							response.sendRedirect("offers.jsp");
+						} else {
+							response.sendRedirect("admin/restaraunts.html");
+						}
+
 					}
 				}
 

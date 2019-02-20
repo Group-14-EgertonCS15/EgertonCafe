@@ -6,19 +6,27 @@ public class Offer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int id;
+	private int id, discountedPrice;
 	private Food food;
 	private Restaurant restaurant;
 
 	public Offer() {
 	}
 
-	public Offer(int id, Food food, Restaurant restaurant, String start, String end) {
+	public Offer(int id, Food food, int discountedPrice, Restaurant restaurant, String start, String end) {
 		this.id = id;
 		this.food = food;
 		this.restaurant = restaurant;
+		this.discountedPrice = discountedPrice;
 	}
 
+	public int getDiscountedPrice() {
+		return discountedPrice;
+	}
+
+	public void setDiscountedPrice(int discountedPrice) {
+		this.discountedPrice = discountedPrice;
+	}
 	public int getId() {
 		return id;
 	}

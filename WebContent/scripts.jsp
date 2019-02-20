@@ -106,26 +106,25 @@
 </script>
 
 
-<!-- Process Checkout -->
-<script>
-	paypal.minicart.render();
+<!-- Add to cart -->
 
-	paypal.minicart.cart
-			.on(
-					'checkout',
-					function(evt) {
-						var items = this.items(), len = items.length, total = 0, i;
-
-						// Count the number of each item in the cart
-						for (i = 0; i < len; i++) {
-							total += items[i].get('quantity');
-						}
-
-						if (total < 3) {
-							alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-							evt.preventDefault();
-						}
-					});
+<script type="text/javascript">
+function showOption(x) {
+	if (confirm('Adding elements from a different restaurant will reset the cart. Do you want to continue?')) {			
+	    location.href = 'DisplayCart?foodId='+x+'&qty=1&action=clearcart';
+	} else {
+		// Do nothing!
+	}
+};	function showOptionInOffers(x, y) {
+	if (confirm('Adding elements from a different restaurant will reset the cart. Do you want to continue?')) {			
+	    location.href = 'DisplayCart?foodId='+x+'&qty=1&offerPrice='+y+'&action=clearcart';
+	} else {
+		// Do nothing!
+	}
+};
 </script>
+
+<!-- Process Checkout -->
+
 
 </html>
